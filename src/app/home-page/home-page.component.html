@@ -1,0 +1,32 @@
+<div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+    <header class="masthead mb-auto">
+      <div class="inner">
+        <h3 class="masthead-brand">MyMov-<span class="font-weight-light">Catalogue</span></h3>
+        <nav class="nav nav-masthead justify-content-center">
+          <a class="nav-link active" routerLink="/">Home</a>
+          <a class="nav-link" routerLink="/catalogue" *ngIf="(isAuth | async)" >Catalogue</a>
+        </nav>
+      </div>
+    </header>
+
+    <main role="main" class="inner cover">
+      <h1 class="cover-heading">Build Your Movies Catalogue.</h1>
+      <p class="lead">
+        <span class="font-weight-bold">MyMov-</span>Catalogue is Web-App, that helps you to save your favorite movies, and let search your saved movies by Title, Actore, and genre later.
+      </p>
+      <p class="lead">
+        This App is made as job interview assignment, and you can find git repository link below.
+      </p>
+      <p class="lead">
+        <a routerLink="/catalogue" class="btn btn-lg btn-success" *ngIf="(isAuth | async)">My Catalogue</a>
+        <a routerLink="/auth/login" class="btn btn-lg btn-success" *ngIf="!(isAuth | async)">Sign In to begin</a>
+        <a class="btn btn-lg btn-secondary">Source Code</a>
+      </p>
+    </main>
+
+    <footer class="mastfoot mt-auto">
+      <div class="inner">
+        <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+      </div>
+    </footer>
+</div>

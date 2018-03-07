@@ -1,0 +1,12 @@
+// import Nebular Theme System and the default theme
+@import '~@nebular/theme/styles/theming';
+@import '~@nebular/theme/styles/themes/default';
+
+// change the variables, leave the map empty to use the default values
+$nb-themes: nb-register-theme((
+    color-success: #3F51B5,
+    color-fg-highlight: #3F51B5,
+    link-color: #3F51B5,
+    link-color-hover: #303F9F,
+
+), default, default);

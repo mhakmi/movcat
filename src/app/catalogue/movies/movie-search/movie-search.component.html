@@ -1,0 +1,24 @@
+<nb-card>
+  <nb-card-body>
+      <ng-ais-instantsearch [config]="config">
+  
+        <ng-ais-search-box 
+              resetTitle="Reset"
+              searchAsYouType="false"
+              submitTitle="Search">
+          </ng-ais-search-box>
+          
+          <ng-ais-stats class="text-right">
+            <ng-template let-state="state">
+              {{state.nbHits}} results found in {{state.processingTimeMS}}ms.
+            </ng-template>
+          </ng-ais-stats>
+        
+          <ng-ais-hits>
+            <ng-template let-hits="hits">
+              <mv-movie-details *ngFor="let hit of hits"  [movie]="hit"></mv-movie-details>
+            </ng-template>
+          </ng-ais-hits>
+        </ng-ais-instantsearch>
+  </nb-card-body>
+</nb-card>

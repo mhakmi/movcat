@@ -1,0 +1,14 @@
+<div class="logo-wrapper">
+  <a class="sidebar-toggle" (click)="toggleSidebar()">
+    <i class="fa fa-bars"></i>
+  </a>
+
+  <div class="logo" routerLink="/"><span>MyMov-</span>Catalogue</div>
+</div>
+<span class="fill-remaining"></span>
+<nb-actions size="medium">  
+  <nb-action>
+      <nb-user showInitials="true" [name]="user.displayName != null? user.displayName : user.email "></nb-user>
+  </nb-action>
+  <nb-action icon="fa fa-sign-out" (click)="signOut()"></nb-action>
+</nb-actions>

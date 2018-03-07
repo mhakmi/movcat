@@ -1,0 +1,36 @@
+<form (ngSubmit)="findMovie()" >
+  <div class="form-group row">
+    <!-- <label for="omdbSearchBox">Search Movie</label> -->
+    <div class="col-md-9">
+      <input class="form-control" type="text" name="omdbSearchBox" [(ngModel)]="term">
+    </div>
+    <div class="col-md-3">
+      <button class="btn btn-prmary" type="submit">Find Movies</button>
+    </div>
+  </div>
+</form>
+
+<div class="row" *ngIf="searchResults && searchResults.length">
+  <div class="col-12 col-md-6" *ngFor="let movie of searchResults" >
+    <nb-card>
+      <nb-card-body>
+        <div class="row">
+          <div class="col-4">
+            <img [src]="movie.Poster" [alt]="movie.Title" class="w-100">
+          </div>
+          <div class="col-8">
+            <h4>{{movie.Title}}</h4>
+            <h5>{{movie.Year}}</h5>
+          </div>
+        </div>
+      </nb-card-body>
+      <nb-card-footer>
+        <button class="btn btn-success float-right" (click)="addMovie(movie.imdbID)">Add To My Collection</button>
+      </nb-card-footer>
+    </nb-card>
+  </div>
+</div>
+
+<div class="text-center bg-highlight" *ngIf="!searchResults || searchResults.length === 0">
+  <h4>Nothing Found :(</h4>
+</div>

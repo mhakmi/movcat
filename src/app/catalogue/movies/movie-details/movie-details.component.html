@@ -1,0 +1,99 @@
+<nb-reveal-card [revealed]="editMode">    
+  <nb-card-front>
+    <nb-card>
+      <nb-card-header>{{movie.title}}</nb-card-header>
+      <nb-card-body class="row">
+        <div class="col-3" *ngIf="movie.poster" >
+          <img [src]="movie.poster" [alt]="movie.title" class="w-100">
+        </div>
+        <div class="col-9">
+          <h5>Plot: </h5>
+          <p>{{movie.plot}}</p>
+          <h5>Actors: </h5>
+          <p>{{movie.actors.join(', ')}}</p>  
+          <h5>Genres: </h5>
+          <p>{{movie.genre.join(', ')}}</p>
+        </div>
+      </nb-card-body>
+
+      <nb-card-footer class="text-right">
+        <button class="btn btn-danger" (click)="deleteMovie(movie.key)">Delete</button>
+        <button class="btn btn-success" (click)="toggleEditMode()">Edit</button>
+      </nb-card-footer>
+    </nb-card>
+  </nb-card-front>
+
+  <nb-card-back>
+    <nb-card>
+        <nb-card-header>
+          Edit Movie...
+        </nb-card-header>
+
+        <nb-card-body>
+          <form [formGroup]="editForm">
+            <div class="form-group row">
+              <label for="title" class="col-sm-2 col-form-label">
+                Title:
+              </label>
+              <div class="col-sm-10">
+                <input class="form-control"
+                  type="text"
+                  name="title"
+                  id="title"
+                  formControlName="title"
+                  placeholder="Movie Title"
+                  required>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="plot" class="col-sm-2 col-form-label">
+                Plot:
+              </label>
+              <div class="col-sm-10">
+                <textarea class="form-control"
+                  name="plot"
+                  id="plot"
+                  cols="30" rows="5"
+                  formControlName="plot"></textarea>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="actors" class="col-sm-2 col-form-label">Actors: </label>
+              <div class="col-sm-10">
+                <tag-input name="actors"
+                  formControlName="actors"
+                  [modelAsStrings]="true"
+                  [separatorKeys]="[',']"
+                  addOnBlur="true"
+                  placeholder="Add actor"
+                  secondaryPlaceholder="Add comma-seperated actors names"></tag-input>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="genres" class="col-sm-2 col-form-label">
+                Genres:
+              </label>
+              <div class="col-sm-10">
+                <tag-input name="genres"
+                  formControlName="genres"
+                  [modelAsStrings]="true"
+                  [separatorKeys]="[',']"
+                  addOnBlur="true"
+                  placeholder="Add genre"
+                  secondaryPlaceholder="Add comma-seperated genres"></tag-input>
+              </div>
+            </div>
+          </form>
+        </nb-card-body>
+
+        <nb-card-footer class="text-right">
+          <button class="btn btn-success" (click)="editMovie()" [disabled]="!editForm.dirty">done</button>
+          <button class="btn btn-danger" (click)="cancel()">cancel</button>
+        </nb-card-footer>
+    </nb-card>
+  </nb-card-back>
+    
+</nb-reveal-card>

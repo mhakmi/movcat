@@ -1,0 +1,36 @@
+<nb-layout>
+  <!-- Header -->
+  <nb-layout-header fixed>
+    <ct-header></ct-header>
+  </nb-layout-header>
+  
+  <!-- Sidebar -->
+  <nb-sidebar left responsive tag="cat-sidebar">
+    <nb-menu [items]="sidebarItems"></nb-menu>
+
+    <nb-sidebar-footer class="d-sm-none d-md-block">
+      <ul>
+        <li>
+          <a href="https://facebook.com/mj.hakmi" target="_blank"><i class="fa fa-facebook"></i></a>
+        </li>
+        <li>
+          <a href="https://twitter.com/mhakmi" target="_blank"><i class="fa fa-twitter"></i></a>
+        </li>
+        <li>
+          <a href="www.linkedin.com/in/mjhakmi" target="_blank"><i class="fa fa fa-linkedin"></i></a>
+        </li>
+      </ul>
+    </nb-sidebar-footer>
+  </nb-sidebar>
+
+  <!-- Main content section -->
+  <nb-layout-column>
+    <ng-content select="router-outlet"></ng-content>
+  </nb-layout-column>
+
+  <!-- Footer -->
+  <nb-layout-footer>
+    <ct-footer></ct-footer>
+  </nb-layout-footer>
+
+</nb-layout>

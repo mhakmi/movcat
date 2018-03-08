@@ -32,6 +32,3 @@ Algolia is a great platform for adding search capabilities to [Firebase](https:/
 > I wrote helper [Node.Js](https://nodejs.org) application and deployed it on [Heroku](https://www.heroku.com/) to make ongoing database live sync to Algolia index.
 <<<<<<< HEAD
 > The source code for this App. provided with this repository under `movcat-algolia-sync` folder.
-=======
-> The source code for this App. provided with this repository under `movcat-algolia-sync` folder.
->>>>>>> a1eef6c54040dd87af4da9ed66b8f97797a7b0bc

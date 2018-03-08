@@ -18,18 +18,22 @@ const algolia = algoliasearch(
 );
 const index = algolia.initIndex(process.env.ALGOLIA_INDEX_NAME);
 
-
-
 const collectionsRef = database.ref('/collections');
 collectionsRef.on('child_added', addOrUpdateIndexRecord);
 collectionsRef.on('child_changed', addOrUpdateIndexRecord);
-collectionsRef.on('child_removed', deleteIndexRecord);
+
+const deleteLogRef = database.ref('/deleteLog');
+deleteLogRef.on('child_added', deleteIndexRecord);
 
 function addOrUpdateIndexRecord(collection) {
-
+  console.log('addOrUpdateIndexRecord');
+  // console.log(collection.toJSON())
   for(var key in collection.val()) {
+
     let movie = collection.val()[key];
     movie.UID = collection.key;
+    movie.key = key;
+
     // Get Firebase object
     const record = movie;
     // Specify Algolia's objectID using the Firebase object key
@@ -44,14 +48,13 @@ function addOrUpdateIndexRecord(collection) {
         console.error('Error when indexing collection into Algolia', error);
         process.exit(1);
       });
-  }
-  
-  
+  }  
 }
 
 function deleteIndexRecord(collection) {
   // Get Algolia's objectID from the Firebase object key
-  const objectID = collection.key;
+  const objectID = collection.val().movieID;
+
   // Remove the object from Algolia
   index
     .deleteObject(objectID)

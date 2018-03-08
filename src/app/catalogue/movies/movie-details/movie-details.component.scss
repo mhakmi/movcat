@@ -11,4 +11,10 @@
             height: 100%;
         }
     }
+
+    /deep/ nb-reveal-card {
+        a.reveal-button {
+            display: none !important;
+        }
+    }    
 }

@@ -1,3 +1,5 @@
+<h2>My Movies</h2>
+<hr>
 <div class="row">
   <div class="col-12 col-md-12" *ngFor="let movie of moviesList | async; let i = index" >
     <mv-movie-details [movie]="movie"></mv-movie-details>

@@ -24,10 +24,13 @@
         "../node_modules/font-awesome/scss/font-awesome.scss",
         "../node_modules/angular-instantsearch/bundles/instantsearch.min.css",
         "../node_modules/angular-instantsearch/bundles/instantsearch-theme-algolia.min.css",
+        "../node_modules/pace-js/templates/pace-theme-flash.tmpl.css",
         
         "styles.scss"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/pace-js/pace.min.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

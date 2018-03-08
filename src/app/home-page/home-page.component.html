@@ -20,12 +20,13 @@
       <p class="lead">
         <a routerLink="/catalogue" class="btn btn-lg btn-success" *ngIf="(isAuth | async)">My Catalogue</a>
         <a routerLink="/auth/login" class="btn btn-lg btn-success" *ngIf="!(isAuth | async)">Sign In to begin</a>
-        <a class="btn btn-lg btn-secondary">Source Code</a>
+        <a href="https://github.com/mhakmi/movcat" target="_blank" class="btn btn-lg btn-secondary">Source Code</a>
       </p>
     </main>
 
     <footer class="mastfoot mt-auto">
       <div class="inner">
+          <p>Created By <b>Moahmmed J. Hakmi</b>.</p>
         <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
       </div>
     </footer>

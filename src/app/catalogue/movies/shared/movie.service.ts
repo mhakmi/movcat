@@ -10,6 +10,7 @@ export class MovieService {
   private basePath: string; //Firebase Database collections base path
 
   moviesRef: AngularFireList<Movie>; //user collection DB Reference
+  deleteLogRef: AngularFireList<any>;
 
   /**
    * Creates an instance of MovieService.
@@ -20,6 +21,7 @@ export class MovieService {
   constructor(private _afDb: AngularFireDatabase, private _auth: AuthService) {
     this.basePath = `/collections/${this._auth.loggedUserID}`; //set basePath to point user's collection
     this.moviesRef = this._afDb.list(this.basePath); //initiate DB reference
+    this.deleteLogRef = this._afDb.list('/deleteLog');
   }
 
   /**
@@ -71,13 +73,22 @@ export class MovieService {
   }
 
   /**
-   * Delete movie by Key
+   * Delete movie by Key,
+   * log deleted movie in order to sync it with Algolia index
    * 
    * @param {string} key 
    * @returns 
    * @memberof MovieService
    */
   deleteMovie(key: string) {
-    return this.moviesRef.remove(key)
+    let remove = this.moviesRef.remove(key);
+    remove.then(() => {
+      this.deleteLogRef.push({
+        collectionID: this._auth.loggedUserID,
+        movieID: key
+      })
+    })
+
+    return remove;
   }
 }

@@ -1,0 +1,6 @@
+{
+    "name": "movcat_collections_sync_algolia",
+    "description": "this app to sync collections data from movcat db to algolia search4",
+    "keywords": ["firebase", "algolia", "angular"],
+    "image": "heroku/nodejs"
+  }

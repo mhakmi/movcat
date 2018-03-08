@@ -1,0 +1,21 @@
+{
+  "name": "movcat_collections_sync_algolia",
+  "version": "1.0.0",
+  "description": "this app to sync collections data from movcat db to algolia search",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "firebase",
+    "algolia",
+    "angular"
+  ],
+  "author": "Mohammed J. Hakmi",
+  "license": "MIT",
+  "dependencies": {
+    "algoliasearch": "^3.24.12",
+    "dotenv": "^5.0.1",
+    "firebase": "^4.10.1"
+  }
+}

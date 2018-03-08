@@ -30,5 +30,4 @@ Deployed DEMO [here!](https://mymovcat.firebaseapp.com)
 Algolia is a great platform for adding search capabilities to [Firebase](https://firebase.google.com/) Realtime Database. Algolia gives you full-text search, and support for more advanced features like filtering and faceting right out of the box.
 
 > I wrote helper [Node.Js](https://nodejs.org) application and deployed it on [Heroku](https://www.heroku.com/) to make ongoing database live sync to Algolia index.
-<<<<<<< HEAD
 > The source code for this App. provided with this repository under `movcat-algolia-sync` folder.

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { environment } from '../../../../environments/environment';
+import { AuthService } from '../../../core/services/auth/auth.service';
 
 @Component({
   selector: 'mv-movie-search',
@@ -9,32 +10,29 @@ import { environment } from '../../../../environments/environment';
 })
 export class MovieSearchComponent implements OnInit {
 
-  config = {
-    apiKey: 'f02ea4832f6a11fe872e633f4445d6a4',
-    appId: 'HRD8BPHTMH',
-    indexName: 'dev_movcat',
-    urlSync: false,
-    searchParameters: {
-      facets: '*',
-      facetFilters: ['UID:zntj76yXkkSdJd06GZ9TeK3Q2S53']
-    },
-    searchFunction: (helper) => {
-      if(helper.state.query == '') {
-        return;
-      }
+  config;
 
-      helper.search();
+  constructor(private _auth: AuthService) {
+    this.config = {
+      apiKey: environment.algolia.apiKey,
+      appId: environment.algolia.appId,
+      indexName: environment.algolia.indexName,
+      urlSync: false,
+      searchParameters: {
+        facets: '*',
+        facetFilters: [`UID:${this._auth.loggedUserID}`]
+      },
+      searchFunction: (helper) => {
+        if(helper.state.query == '') { //prevent search onLoad
+          return;
+        }
+  
+        helper.search();
+      }
     }
   }
 
-  constructor() { }
-
-  fn(helper) {
-    console.log('helper', helper)
-  }
-
   ngOnInit() {
-
   }
 
 }

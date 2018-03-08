@@ -18,7 +18,5 @@ export const environment = {
     appId: 'HRD8BPHTMH',
     apiKey: 'f02ea4832f6a11fe872e633f4445d6a4',
     indexName: 'dev_movcat',
-    urlSync: false,
-    searchParameters: {}
   }
 };
